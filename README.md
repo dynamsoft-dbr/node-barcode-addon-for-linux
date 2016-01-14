@@ -84,6 +84,17 @@ The sample demonstrates how to make nodejs barcode reader addon on Ubuntu with D
 ![node barcode extension](http://www.codepool.biz/wp-content/uploads/2015/12/node_dbr_result.png)
 
 
+## Online Barcode Reader with Node Addon
+1. Run **server.js**:
+    
+    ```
+    node server.js
+    ```
+    
+2. Visit *http://localhost:2016*:
+![online barcode reader with nodejs](http://www.codepool.biz/wp-content/uploads/2016/01/node-online-barcode-reader.png)
+
+
 [1]:http://labs.dynamsoft.com/linux-barcode-reader-overview.htm
 [2]:https://nodejs.org/en/download/
 
