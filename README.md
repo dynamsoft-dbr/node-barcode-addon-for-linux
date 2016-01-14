@@ -90,7 +90,7 @@ The sample demonstrates how to make nodejs barcode reader addon on Ubuntu with D
     node server.js
     ```
     
-2. Visit *http://localhost:2016*:
+2. Visit **http://localhost:2016/index.htm**:
 
     ![online barcode reader with nodejs](http://www.codepool.biz/wp-content/uploads/2016/01/node-online-barcode-reader.png)
 
