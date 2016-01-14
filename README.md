@@ -84,13 +84,20 @@ The sample demonstrates how to make nodejs barcode reader addon on Ubuntu with D
 ![node barcode extension](http://www.codepool.biz/wp-content/uploads/2015/12/node_dbr_result.png)
 
 ## Online Barcode Reader with Node Addon
-1. Run **server.js**:
+1. Install express and formidable:
+    
+    ```
+    npm install express
+    npm install formidable
+    ```
+    
+2. Run **server.js**:
     
     ```
     node server.js
     ```
     
-2. Visit **http://localhost:2016/index.htm**:
+3. Visit **http://localhost:2016/index.htm**:
 
     ![online barcode reader with nodejs](http://www.codepool.biz/wp-content/uploads/2016/01/node-online-barcode-reader.png)
 
