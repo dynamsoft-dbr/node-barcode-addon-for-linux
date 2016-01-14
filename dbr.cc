@@ -45,12 +45,12 @@ void DecodeFile(const FunctionCallbackInfo<Value>& args) {
 	HandleScope scope(isolate);
 
 	// convert v8 string to char *
-	String::Utf8Value fileName(args[0]->ToString());
-	String::Utf8Value license(args[1]->ToString());
+	String::Utf8Value license(args[0]->ToString());
+	String::Utf8Value fileName(args[1]->ToString());
 	char *pFileName = *fileName;
 	char *pszLicense = *license;
 	// Dynamsoft Barcode Reader: init
-	__int64 llFormat = (OneD | QR_CODE | PDF417 | DATAMATRIX);
+	__int64 llFormat = args[2]->IntegerValue();
 	int iMaxCount = 0x7FFFFFFF;
 	ReaderOptions ro = {0};
 	pBarcodeResultArray pResults = NULL;
@@ -69,7 +69,7 @@ void DecodeFile(const FunctionCallbackInfo<Value>& args) {
 
 	// Decode barcode image
 	int ret = DBR_DecodeFile(pFileName, &ro, &pResults);
-	printf("ret: %d\n", ret);
+	printf("DBR_DecodeFile ret: %d\n", ret);
 
 	if (ret == DBR_OK){
 		int count = pResults->iBarcodeCount;
@@ -77,7 +77,7 @@ void DecodeFile(const FunctionCallbackInfo<Value>& args) {
 		pBarcodeResult tmp = NULL;
 
 		// javascript callback function
-		Local<Function> cb = Local<Function>::Cast(args[2]);
+		Local<Function> cb = Local<Function>::Cast(args[3]);
 		const unsigned argc = 1;
 
 		// array for storing barcode results
@@ -88,7 +88,7 @@ void DecodeFile(const FunctionCallbackInfo<Value>& args) {
 			tmp = ppBarcodes[i];
 
 			Local<Object> result = Object::New(isolate);
-			result->Set(String::NewFromUtf8(isolate, "format"), Number::New(isolate, tmp->llFormat));
+			result->Set(String::NewFromUtf8(isolate, "format"), String::NewFromUtf8(isolate, GetFormatStr(tmp->llFormat)));
 			result->Set(String::NewFromUtf8(isolate, "value"), String::NewFromUtf8(isolate, tmp->pBarcodeData));
 
 			barcodeResults->Set(Number::New(isolate, i), result);

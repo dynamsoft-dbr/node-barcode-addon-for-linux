@@ -13,7 +13,7 @@ fs.readFile('./license.txt', 'utf8', function (err, data) {
   rl.question("Please input a barcode image path: ", function(answer) {
 
     dbr.decodeFile(
-      answer, license,
+      license, answer, 0x3FF | 0x2000000 | 0x8000000 | 0x4000000,
       function(msg){
         var result = null;
         for (index in msg) {
