@@ -1,5 +1,5 @@
 * { margin: 0; padding: 0; }
-html { color: #606060; font-family: OpenSans-Regular; height: 100%; }
+html { color: #606060; font-family: OpenSans-Regular; height: 100%; scroll-behavior: smooth; }
 body { font-size: 16px; line-height: 26px; height: 100%; }
 ul, li { list-style: none; }
 .hidden { display: none; }
